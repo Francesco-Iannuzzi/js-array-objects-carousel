@@ -32,7 +32,7 @@ Aggiungere bottoni di start/stop e di inversione del meccanismo di autoplay.
 const videogames = [
     {
         image: 'img/01.webp',
-        title: 'Marvel\'s Spiderman Miles Morale',
+        title: 'Marvel\'s Spiderman Miles Morales',
         text: 'Experience the rise of Miles Morales as the new hero masters incredible, explosive new powers to become his own Spider-Man.',
     }, {
         image: 'img/02.webp',
@@ -60,23 +60,28 @@ let activeVideogame = 0;
 const carouselEl = document.querySelector('.my_carousel');
 //console.log(carouselEl);
 
-//usare il ciclo forEach per ciclare nell'array degli object
-videogames.forEach((game, i) => {
-
-    //creare il markup da inserire dinamicamente verificando con il ternario se il gioco selezionato ha la classe "active"
-    const markup =
-        `
-    <div class="videogames ${i === activeVideogame ? 'active' : ''}"">
-        <img src="./assets/${game.image}" alt="">
-        <div class="carousel_bottom rounded-bottom">
-            <h1 class="videogame_title ms-3 pt-2">${game.title}</h1>
-            <p class="videogame_description ms-3 mb-0 pb-2">${game.text}</p>
+//creare una funzione che stampi un object con le sue proprietà in pagina
+function printObjectAndProperties(array, let) {
+    //usare il ciclo forEach per ciclare nell'array degli object
+    array.forEach((element, i) => {
+    
+        //creare il markup da inserire dinamicamente verificando con il ternario se il gioco selezionato ha la classe "active"
+        const markup =
+            `
+        <div class="videogames ${i === let ? 'active' : ''}">
+            <img src="./assets/${element.image}" alt="">
+            <div class="carousel_bottom rounded-bottom">
+                <h1 class="videogame_title ms-3 pt-2">${element.title}</h1>
+                <p class="videogame_description ms-3 mb-0 pb-2">${element.text}</p>
+            </div>
         </div>
-    </div>
-    `
-    //stampare in pagina il markup
-    carouselEl.innerHTML += markup
-});
+        `
+        //stampare in pagina il markup
+        carouselEl.innerHTML += markup
+    });
+    
+}
+printObjectAndProperties(videogames, activeVideogame);
 
 //selezionare tutti i videogame
 const videogameElement = document.querySelectorAll('.videogames');
@@ -86,7 +91,7 @@ const videogameElement = document.querySelectorAll('.videogames');
 const nextElement = document.querySelector('.next');
 
 //creare un addEventListener per andare all'immagine successiva
-nextElement.addEventListener('click', function () {
+nextElement.addEventListener('click', function progres () {
     //console.log('check next');
 
     //selezionare il videogame attivo
@@ -113,7 +118,6 @@ nextElement.addEventListener('click', function () {
     const nextVideogame = videogameElement[activeVideogame];
     nextVideogame.classList.add('active');
 });
-
 
 //selezionare il pulsante della DOM a cui attribuire l'addEventListener e salvarlo in una variabile
 const prevElement = document.querySelector('.prev');
