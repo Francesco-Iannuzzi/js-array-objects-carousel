@@ -53,21 +53,19 @@ const videogames = [
     }
 ];
 
-//selezionare l'immagine principale attiva
+//settare il videogame principale attivo
 let activeVideogame = 0;
 
-
-//selezionare il container in dom dove inserire gli oggetti
+//selezionare il container in DOM dove inserire gli oggetti
 const carouselEl = document.querySelector('.my_carousel');
 //console.log(carouselEl);
 
 //usare il ciclo forEach per ciclare nell'array degli object
 videogames.forEach((game, i) => {
 
-
-    //creare il markup da inserire dinamicamente
-    const markup = 
-    `
+    //creare il markup da inserire dinamicamente verificando con il ternario se il gioco selezionato ha la classe "active"
+    const markup =
+        `
     <div class="videogames ${i === activeVideogame ? 'active' : ''}"">
         <img src="./assets/${game.image}" alt="">
         <div class="carousel_bottom rounded-bottom">
@@ -78,4 +76,70 @@ videogames.forEach((game, i) => {
     `
     //stampare in pagina il markup
     carouselEl.innerHTML += markup
+});
+
+//selezionare tutti i videogame
+const videogameElement = document.querySelectorAll('.videogames');
+//console.log(videogameElement);
+
+//selezionare il pulsante della DOM a cui attribuire l'addEventListener e salvarlo in una variabile
+const nextElement = document.querySelector('.next');
+
+//creare un addEventListener per andare all'immagine successiva
+nextElement.addEventListener('click', function () {
+    console.log('check next');
+
+    //selezionare il videogame attivo
+    const videogameElementActive = videogameElement[activeVideogame];
+    //console.log(videogameElementActive);
+
+    //rimuovere la classe active al videogame attivo
+    videogameElementActive.remove('active');
+    //console.log(videogameElementActive);
+
+    //controllare se il valore di activeImage è array.lenght - 1
+    if (activeVideogame === videogameElement.length - 1) {
+
+        //se è vero activeVideogame deve essere settato a 0
+        activeVideogame = 0
+
+    } else {
+        //incrementare il valore dell'activeVideogame
+        activeVideogame++
+    }
+
+    //aggiungere la classe active al prossimo videogame
+    const nextVideogame = videogameElement[activeVideogame];
+    nextVideogame.classList.add('active');
+});
+
+
+//selezionare il pulsante della DOM a cui attribuire l'addEventListener e salvarlo in una variabile
+const prevElement = document.querySelector('.prev');
+
+//creare un addEventListener per andare all'immagine precedente
+prevElement.addEventListener('click', function () {
+    console.log('check prev');;
+    //selezionare il videogame attivo
+    const videogameElementActive = videogameElement[activeVideogame];
+    //console.log(videogameElementActive);
+
+    //rimuovere la classe active al videogame attivo
+    videogameElementActive.remove('active');
+    //console.log(videogameElementActive);
+
+    //controllare se il valore di activeImage è array.lenght - 1
+    if (activeVideogame === 0) {
+
+        //se è vero activeVideogame deve essere settato a 0
+        activeVideogame = videogameElement.length - 1
+
+    } else {
+        //incrementare il valore dell'activeVideogame
+        activeVideogame--
+    }
+
+    //aggiungere la classe active al prossimo videogame
+    const prevVideogame = videogameElement[activeVideogame];
+    prevVideogame.classList.add('active');
 });
