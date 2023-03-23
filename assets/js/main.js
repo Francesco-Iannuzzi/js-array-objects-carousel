@@ -87,7 +87,7 @@ const nextElement = document.querySelector('.next');
 
 //creare un addEventListener per andare all'immagine successiva
 nextElement.addEventListener('click', function () {
-    console.log('check next');
+    //console.log('check next');
 
     //selezionare il videogame attivo
     const videogameElementActive = videogameElement[activeVideogame];
@@ -102,8 +102,7 @@ nextElement.addEventListener('click', function () {
 
         //se è vero activeVideogame deve essere settato a 0
         activeVideogame = 0
-        console.log('check');
-        console.log(activeVideogame);
+
 
     } else {
         //incrementare il valore dell'activeVideogame
@@ -121,7 +120,7 @@ const prevElement = document.querySelector('.prev');
 
 //creare un addEventListener per andare all'immagine precedente
 prevElement.addEventListener('click', function () {
-    console.log('check prev');;
+    //console.log('check prev');
     //selezionare il videogame attivo
     const videogameElementActive = videogameElement[activeVideogame];
     //console.log(videogameElementActive);
