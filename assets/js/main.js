@@ -53,22 +53,29 @@ const videogames = [
     }
 ];
 
+//selezionare l'immagine principale attiva
+let activeVideogame = 0;
+
 
 //selezionare il container in dom dove inserire gli oggetti
 const carouselEl = document.querySelector('.my_carousel');
 //console.log(carouselEl);
 
 //usare il ciclo forEach per ciclare nell'array degli object
-videogames.forEach(game => {
+videogames.forEach((game, i) => {
+
+
     //creare il markup da inserire dinamicamente
     const markup = 
     `
-    <div class="videogames">
-        <img class="active" src="./assets/${game.image}" alt="">
+    <div class="videogames ${i === activeVideogame ? 'active' : ''}"">
+        <img src="./assets/${game.image}" alt="">
         <div class="carousel_bottom rounded-bottom">
             <h1 class="videogame_title ms-3 pt-2">${game.title}</h1>
             <p class="videogame_description ms-3 mb-0 pb-2">${game.text}</p>
         </div>
     </div>
     `
+    //stampare in pagina il markup
+    carouselEl.innerHTML += markup
 });

@@ -15,7 +15,7 @@ body
     object-fit: cover;
 }
 
-.my_carousel img:not(.active)
+.my_carousel .videogames:not(.active)
 {
     display: none;
 }
@@ -36,7 +36,7 @@ body
 .next
 {
     position: absolute;
-    bottom: 100px;
+    bottom: 120px;
     left: 50%;
 }
 
