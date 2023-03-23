@@ -94,14 +94,16 @@ nextElement.addEventListener('click', function () {
     //console.log(videogameElementActive);
 
     //rimuovere la classe active al videogame attivo
-    videogameElementActive.remove('active');
+    videogameElementActive.classList.remove('active');
     //console.log(videogameElementActive);
 
-    //controllare se il valore di activeImage è array.lenght - 1
+    //controllare se il valore di activeVideogame è array.lenght - 1
     if (activeVideogame === videogameElement.length - 1) {
 
         //se è vero activeVideogame deve essere settato a 0
         activeVideogame = 0
+        console.log('check');
+        console.log(activeVideogame);
 
     } else {
         //incrementare il valore dell'activeVideogame
@@ -125,14 +127,14 @@ prevElement.addEventListener('click', function () {
     //console.log(videogameElementActive);
 
     //rimuovere la classe active al videogame attivo
-    videogameElementActive.remove('active');
+    videogameElementActive.classList.remove('active');
     //console.log(videogameElementActive);
 
-    //controllare se il valore di activeImage è array.lenght - 1
+    //controllare se il valore di activeVideogame è array.lenght - 1
     if (activeVideogame === 0) {
 
         //se è vero activeVideogame deve essere settato a 0
-        activeVideogame = videogameElement.length - 1
+        activeVideogame = videogameElement.length - 1;
 
     } else {
         //incrementare il valore dell'activeVideogame
